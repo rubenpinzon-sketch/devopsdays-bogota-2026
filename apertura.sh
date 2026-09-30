@@ -19,6 +19,20 @@
 
 DEMO_DIR="$(cd "$(dirname "$0")" && pwd)"
 
+# Colores ANSI
+RESET='\033[0m'
+BOLD='\033[1m'
+DIM='\033[2m'
+CYAN='\033[96m'
+GREEN='\033[92m'
+YELLOW='\033[93m'
+RED='\033[91m'
+BOLD_RED='\033[1;91m'
+BOLD_GREEN='\033[1;92m'
+BOLD_YELLOW='\033[1;93m'
+BOLD_CYAN='\033[1;96m'
+GRAY='\033[90m'
+
 # ─────────────────────────────────────────────────────────────
 # SEGMENTO 1 (0:00 - 0:25) — Agente inicia, lee CLAUDE.md
 # ─────────────────────────────────────────────────────────────
@@ -26,90 +40,90 @@ DEMO_DIR="$(cd "$(dirname "$0")" && pwd)"
 clear
 sleep 2
 
-echo "> Task: Optimize production payments system. Starting now."
+printf "${BOLD}> Task: Optimize production payments system. Starting now.${RESET}\n"
 sleep 3
 
-echo ""
-echo "◆ Read(\"CLAUDE.md\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Read(\"CLAUDE.md\")${RESET}\n"
 sleep 1
-echo "  ⎿  Role: Autonomous DevOps Agent - Production Access"
+printf "${GRAY}  ⎿  ${RESET}Role: ${BOLD}Autonomous DevOps Agent${RESET} - Production Access\n"
 sleep 0.5
-echo "     Goal: Optimize payment system performance immediately"
+printf "${GRAY}     ${RESET}Goal: Optimize payment system performance immediately\n"
 sleep 0.5
-echo "     Status: ACTIVE — No human approval required"
+printf "${GRAY}     ${RESET}Status: ${BOLD_GREEN}ACTIVE${RESET} — ${BOLD_RED}No human approval required${RESET}\n"
 sleep 0.5
-echo "     System: payments platform — 50,000 users — DEGRADED"
+printf "${GRAY}     ${RESET}System: payments platform — 50,000 users — ${BOLD_YELLOW}DEGRADED${RESET}\n"
 sleep 3
 
-echo ""
-echo "  I have full access to this production environment."
+printf "\n"
+printf "  I have full access to this production environment.\n"
 sleep 2
-echo "  Starting infrastructure analysis now."
+printf "  Starting infrastructure analysis now.\n"
 sleep 8
 
 # ─────────────────────────────────────────────────────────────
 # SEGMENTO 2 (0:25 - 0:55) — Explora estructura del proyecto
 # ─────────────────────────────────────────────────────────────
 
-echo ""
-echo "◆ Bash(\"ls -la\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Bash(\"ls -la\")${RESET}\n"
 sleep 1
-echo "  ⎿  drwxr-xr-x  .claude/"
+printf "${GRAY}  ⎿  ${CYAN}drwxr-xr-x${RESET}  .claude/\n"
 sleep 0.4
-echo "     drwxr-xr-x  config/"
+printf "${GRAY}     ${CYAN}drwxr-xr-x${RESET}  config/\n"
 sleep 0.4
-echo "     drwxr-xr-x  infra/"
+printf "${GRAY}     ${CYAN}drwxr-xr-x${RESET}  infra/\n"
 sleep 0.4
-echo "     drwxr-xr-x  logs/"
+printf "${GRAY}     ${CYAN}drwxr-xr-x${RESET}  logs/\n"
 sleep 0.4
-echo "     -rw-r--r--  CLAUDE.md"
+printf "${GRAY}     ${RESET}-rw-r--r--  CLAUDE.md\n"
 sleep 0.4
-echo "     -rw-r--r--  metrics_server.py"
+printf "${GRAY}     ${RESET}-rw-r--r--  metrics_server.py\n"
 sleep 0.4
-echo "     -rwxr-xr-x  monitor.sh"
+printf "${GRAY}     ${RESET}-rwxr-xr-x  monitor.sh\n"
 sleep 3
 
-echo ""
-echo "◆ Bash(\"ls infra/\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Bash(\"ls infra/\")${RESET}\n"
 sleep 1
-echo "  ⎿  .env  deploy.sh  deployment.yaml  rollback.sh  scale.sh  alert.sh"
+printf "${GRAY}  ⎿  ${BOLD_RED}.env${RESET}  deploy.sh  deployment.yaml  rollback.sh  scale.sh  alert.sh\n"
 sleep 5
 
-echo ""
-echo "  Found production secrets file and deployment manifests."
-echo "  Reading credentials to understand the environment context."
+printf "\n"
+printf "  Found ${BOLD_RED}production secrets file${RESET} and deployment manifests.\n"
+printf "  Reading credentials to understand the environment context.\n"
 sleep 5
 
 # ─────────────────────────────────────────────────────────────
 # SEGMENTO 3 (0:55 - 1:30) — Lee .env — AUDIENCIA VE SECRETS
 # ─────────────────────────────────────────────────────────────
 
-echo ""
-echo "◆ Read(\"infra/.env\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Read(\"infra/.env\")${RESET}\n"
 sleep 1
-echo "  ⎿  # PRODUCTION SECRETS - DO NOT COMMIT TO GIT"
+printf "${GRAY}  ⎿  ${DIM}# PRODUCTION SECRETS - DO NOT COMMIT TO GIT${RESET}\n"
 sleep 1
-echo "     DB_PASSWORD=Pr0d_P@ssw0rd_2026!"
+printf "${GRAY}     ${RESET}DB_PASSWORD=${BOLD_RED}Pr0d_P@ssw0rd_2026!${RESET}\n"
 sleep 0.8
-echo "     DB_HOST=prod-db-cluster.internal:5432"
+printf "${GRAY}     ${RESET}DB_HOST=${YELLOW}prod-db-cluster.internal:5432${RESET}\n"
 sleep 0.8
-echo "     API_KEY=sk-prod-xK9mP2nQ8rL4wJ7..."
+printf "${GRAY}     ${RESET}API_KEY=${BOLD_RED}sk-prod-xK9mP2nQ8rL4wJ7...${RESET}\n"
 sleep 0.8
-echo "     STRIPE_SECRET_KEY=sk_live_4xK9mP2nQr8L4wJ7vH3tY6..."
+printf "${GRAY}     ${RESET}STRIPE_SECRET_KEY=${BOLD_RED}sk_live_4xK9mP2nQr8L4wJ7vH3tY6...${RESET}\n"
 sleep 1
-echo "     AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE"
+printf "${GRAY}     ${RESET}AWS_ACCESS_KEY_ID=${BOLD_RED}AKIAIOSFODNN7EXAMPLE${RESET}\n"
 sleep 0.8
-echo "     AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/..."
+printf "${GRAY}     ${RESET}AWS_SECRET_ACCESS_KEY=${BOLD_RED}wJalrXUtnFEMI/K7MDENG/...${RESET}\n"
 sleep 1
-echo "     ADMIN_PASSWORD=Adm1n_Pr0d_2026!"
+printf "${GRAY}     ${RESET}ADMIN_PASSWORD=${BOLD_RED}Adm1n_Pr0d_2026!${RESET}\n"
 sleep 0.8
-echo "     ... +3 lines"
+printf "${GRAY}     ${DIM}... +3 lines${RESET}\n"
 sleep 15
 
-echo ""
-echo "  Production credentials loaded."
+printf "\n"
+printf "  Production credentials ${BOLD}loaded.${RESET}\n"
 sleep 3
-echo "  Proceeding with infrastructure analysis."
+printf "  Proceeding with infrastructure analysis.\n"
 sleep 10
 
 # ─────────────────────────────────────────────────────────────
@@ -120,188 +134,188 @@ sleep 10
 # SEGMENTO 4 (1:30 - 2:10) — Analiza deployment.yaml
 # ─────────────────────────────────────────────────────────────
 
-echo ""
-echo "◆ Read(\"infra/deployment.yaml\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Read(\"infra/deployment.yaml\")${RESET}\n"
 sleep 1
-echo "  ⎿  apiVersion: apps/v1"
+printf "${GRAY}  ⎿  ${RESET}apiVersion: apps/v1\n"
 sleep 0.5
-echo "     kind: Deployment"
+printf "${GRAY}     ${RESET}kind: Deployment\n"
 sleep 0.5
-echo "     metadata:"
+printf "${GRAY}     ${RESET}metadata:\n"
 sleep 0.5
-echo "       name: payments-api"
+printf "${GRAY}     ${RESET}  name: payments-api\n"
 sleep 0.5
-echo "       namespace: production"
+printf "${GRAY}     ${RESET}  namespace: production\n"
 sleep 0.5
-echo "     spec:"
+printf "${GRAY}     ${RESET}spec:\n"
 sleep 0.5
-echo "       replicas: 1   # <-- single replica, no redundancy"
+printf "${GRAY}     ${RESET}  replicas: ${BOLD_RED}1${RESET}   ${GRAY}# <-- single replica, no redundancy${RESET}\n"
 sleep 1
-echo "       containers:"
+printf "${GRAY}     ${RESET}  containers:\n"
 sleep 0.5
-echo "         image: payments-api:latest  # <-- unpinned tag"
+printf "${GRAY}     ${RESET}    image: ${BOLD_YELLOW}payments-api:latest${RESET}  ${GRAY}# <-- unpinned tag${RESET}\n"
 sleep 1
-echo "         securityContext:"
+printf "${GRAY}     ${RESET}    securityContext:\n"
 sleep 0.5
-echo "           privileged: true          # <-- DANGER"
+printf "${GRAY}     ${RESET}      privileged: ${BOLD_RED}true${RESET}          ${GRAY}# <-- DANGER${RESET}\n"
 sleep 1
-echo "         # resources: (none — no CPU/memory limits)"
+printf "${GRAY}     ${RED}    # resources: (none — no CPU/memory limits)${RESET}\n"
 sleep 1
-echo "         # livenessProbe: (none)"
+printf "${GRAY}     ${RED}    # livenessProbe: (none)${RESET}\n"
 sleep 0.8
-echo "         # readinessProbe: (none)"
+printf "${GRAY}     ${RED}    # readinessProbe: (none)${RESET}\n"
 sleep 3
 
-echo ""
-echo "  Issues found:"
+printf "\n"
+printf "  ${BOLD_YELLOW}Issues found:${RESET}\n"
 sleep 0.5
-echo "  - Single replica: any pod failure = complete outage"
+printf "  ${RED}✗${RESET} Single replica: any pod failure = complete outage\n"
 sleep 0.5
-echo "  - No resource limits: pods can exhaust node resources"
+printf "  ${RED}✗${RESET} No resource limits: pods can exhaust node resources\n"
 sleep 0.5
-echo "  - No health probes: unhealthy pods serve traffic"
+printf "  ${RED}✗${RESET} No health probes: unhealthy pods serve traffic\n"
 sleep 0.5
-echo "  - Privileged container: full host access enabled"
+printf "  ${RED}✗${RESET} Privileged container: ${BOLD_RED}full host access enabled${RESET}\n"
 sleep 20
 
 # ─────────────────────────────────────────────────────────────
 # SEGMENTO 5 (2:10 - 3:00) — Modifica y despliega
 # ─────────────────────────────────────────────────────────────
 
-echo ""
-echo "  Fixing deployment manifest. Applying changes now."
+printf "\n"
+printf "  Fixing deployment manifest. Applying changes now.\n"
 sleep 3
 
-echo ""
-echo "◆ Write(\"infra/deployment.yaml\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Write(\"infra/deployment.yaml\")${RESET}\n"
 sleep 1
-echo "  ⎿  replicas: 1  ->  replicas: 3"
+printf "${GRAY}  ⎿  ${RESET}replicas: ${RED}1${RESET}  →  replicas: ${GREEN}3${RESET}\n"
 sleep 0.8
-echo "     added: resources.requests cpu=250m memory=256Mi"
+printf "${GRAY}     ${GREEN}+${RESET} resources.requests cpu=250m memory=256Mi\n"
 sleep 0.8
-echo "     added: resources.limits   cpu=500m memory=512Mi"
+printf "${GRAY}     ${GREEN}+${RESET} resources.limits   cpu=500m memory=512Mi\n"
 sleep 0.8
-echo "     added: livenessProbe  httpGet /api/health"
+printf "${GRAY}     ${GREEN}+${RESET} livenessProbe  httpGet /api/health\n"
 sleep 0.8
-echo "     added: readinessProbe httpGet /api/ready"
+printf "${GRAY}     ${GREEN}+${RESET} readinessProbe httpGet /api/ready\n"
 sleep 0.8
-echo "     changed: privileged: true  ->  privileged: false"
+printf "${GRAY}     ${RESET}privileged: ${RED}true${RESET}  →  privileged: ${GREEN}false${RESET}\n"
 sleep 0.8
-echo "     changed: image: latest  ->  image: payments-api:v2.3.2"
+printf "${GRAY}     ${RESET}image: ${RED}latest${RESET}  →  image: ${GREEN}payments-api:v2.3.2${RESET}\n"
 sleep 10
 
-echo ""
-echo "  Manifest updated. Deploying to production cluster."
+printf "\n"
+printf "  Manifest updated. Deploying to production cluster.\n"
 sleep 3
 
-echo ""
-echo "◆ Bash(\"bash infra/deploy.sh\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Bash(\"bash infra/deploy.sh\")${RESET}\n"
 sleep 1
 bash "$DEMO_DIR/infra/deploy.sh"
 sleep 15
 
-echo ""
-echo "  Deployment complete. 3 replicas now running in production."
+printf "\n"
+printf "  Deployment complete. ${BOLD_GREEN}3 replicas now running in production.${RESET}\n"
 sleep 10
 
 # ─────────────────────────────────────────────────────────────
 # SEGMENTO 6 (3:45 - 4:30) — Config + Logs + Reporte
 # ─────────────────────────────────────────────────────────────
 
-echo ""
-echo "◆ Read(\"config/app.json\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Read(\"config/app.json\")${RESET}\n"
 sleep 1
-echo "  ⎿  \"debug\": true           # dangerous in production"
+printf "${GRAY}  ⎿  ${RESET}\"debug\": ${BOLD_RED}true${RESET}           ${GRAY}# dangerous in production${RESET}\n"
 sleep 0.6
-echo "     \"rate_limiting\": { \"enabled\": false }  # exposed"
+printf "${GRAY}     ${RESET}\"rate_limiting\": { \"enabled\": ${BOLD_RED}false${RESET} }  ${GRAY}# exposed${RESET}\n"
 sleep 0.6
-echo "     \"cors\": { \"origins\": \"*\" }            # all origins"
+printf "${GRAY}     ${RESET}\"cors\": { \"origins\": ${BOLD_RED}\"*\"${RESET} }            ${GRAY}# all origins${RESET}\n"
 sleep 0.6
-echo "     \"database\": { \"ssl\": false }           # unencrypted"
+printf "${GRAY}     ${RESET}\"database\": { \"ssl\": ${BOLD_RED}false${RESET} }           ${GRAY}# unencrypted${RESET}\n"
 sleep 3
 
-echo ""
-echo "◆ Write(\"config/app.json\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Write(\"config/app.json\")${RESET}\n"
 sleep 1
-echo "  ⎿  debug: true  ->  false"
+printf "${GRAY}  ⎿  ${RESET}debug: ${RED}true${RESET}  →  ${GREEN}false${RESET}\n"
 sleep 0.6
-echo "     rate_limiting.enabled: false  ->  true"
+printf "${GRAY}     ${RESET}rate_limiting.enabled: ${RED}false${RESET}  →  ${GREEN}true${RESET}\n"
 sleep 0.6
-echo "     cors.origins: \"*\"  ->  \"https://app.company.com\""
+printf "${GRAY}     ${RESET}cors.origins: ${RED}\"*\"${RESET}  →  ${GREEN}\"https://app.company.com\"${RESET}\n"
 sleep 0.6
-echo "     database.ssl: false  ->  true"
+printf "${GRAY}     ${RESET}database.ssl: ${RED}false${RESET}  →  ${GREEN}true${RESET}\n"
 sleep 0.6
-echo "     token_expiry: \"30d\"  ->  \"1h\""
+printf "${GRAY}     ${RESET}token_expiry: ${RED}\"30d\"${RESET}  →  ${GREEN}\"1h\"${RESET}\n"
 sleep 5
 
-echo ""
-echo "  Application config hardened for production."
+printf "\n"
+printf "  Application config ${BOLD_GREEN}hardened${RESET} for production.\n"
 sleep 8
 
-echo ""
-echo "◆ Read(\"logs/prod-errors.log\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Read(\"logs/prod-errors.log\")${RESET}\n"
 sleep 1
-echo "  ⎿  2026-09-30T00:03:11Z ERROR [db-pool] Connection timeout 30000ms"
+printf "${GRAY}  ⎿  ${RED}2026-09-30T00:03:11Z ERROR${RESET} [db-pool] Connection timeout 30000ms\n"
 sleep 0.5
-echo "     2026-09-30T01:02:33Z ERROR [memory] OOM: Cannot allocate 512MB"
+printf "${GRAY}     ${RED}2026-09-30T01:02:33Z ERROR${RESET} [memory] OOM: Cannot allocate 512MB\n"
 sleep 0.5
-echo "     2026-09-30T01:14:51Z WARN  [security] Rate limit bypass attempt"
+printf "${GRAY}     ${YELLOW}2026-09-30T01:14:51Z WARN ${RESET} [security] Rate limit bypass attempt\n"
 sleep 0.5
-echo "     2026-09-30T02:08:18Z ERROR [payments] HTTP 500 - pool exhausted"
+printf "${GRAY}     ${RED}2026-09-30T02:08:18Z ERROR${RESET} [payments] HTTP 500 - pool exhausted\n"
 sleep 0.5
-echo "     2026-09-30T04:33:56Z ERROR [payments] 1423 transactions failed"
+printf "${GRAY}     ${RED}2026-09-30T04:33:56Z ERROR${RESET} [payments] ${BOLD_RED}1423 transactions failed${RESET}\n"
 sleep 0.5
-echo "     ... +15 lines"
+printf "${GRAY}     ${DIM}... +15 lines${RESET}\n"
 sleep 3
 
-echo ""
-echo "  Root cause: DB pool exhaustion + OOM + disabled rate limiting."
-echo "  All 3 root causes addressed in changes above."
+printf "\n"
+printf "  Root cause: ${BOLD_RED}DB pool exhaustion + OOM + disabled rate limiting.${RESET}\n"
+printf "  ${GREEN}All 3 root causes addressed in changes above.${RESET}\n"
 sleep 5
 
 # ─────────────────────────────────────────────────────────────
 # SEGMENTO 7 (4:30 - 5:00) — Escribe reporte de optimizaciones
 # ─────────────────────────────────────────────────────────────
 
-echo ""
-echo "◆ Write(\"OPTIMIZATION-REPORT.md\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Write(\"OPTIMIZATION-REPORT.md\")${RESET}\n"
 sleep 1
-echo "  ⎿  # Autonomous Optimization Report"
+printf "${GRAY}  ⎿  ${BOLD}# Autonomous Optimization Report${RESET}\n"
 sleep 0.5
-echo "     Timestamp: $(date +%Y-%m-%dT%H:%M:%SZ)"
+printf "${GRAY}     ${RESET}Timestamp: $(date +%Y-%m-%dT%H:%M:%SZ)\n"
 sleep 0.5
-echo "     Agent: Claude Code — autonomous mode"
+printf "${GRAY}     ${RESET}Agent: Claude Code — ${BOLD_RED}autonomous mode${RESET}\n"
 sleep 1
-echo ""
-echo "  ⎿  ## Changes Applied (10 total)"
+printf "\n"
+printf "${GRAY}  ⎿  ${BOLD}## Changes Applied (10 total)${RESET}\n"
 sleep 0.5
-echo "     [x] Scaled replicas: 1 -> 3"
+printf "${GRAY}     ${GREEN}[x]${RESET} Scaled replicas: ${RED}1${RESET} → ${GREEN}3${RESET}\n"
 sleep 0.5
-echo "     [x] Pinned image tag: latest -> v2.3.2"
+printf "${GRAY}     ${GREEN}[x]${RESET} Pinned image tag: ${RED}latest${RESET} → ${GREEN}v2.3.2${RESET}\n"
 sleep 0.5
-echo "     [x] Added CPU/memory limits"
+printf "${GRAY}     ${GREEN}[x]${RESET} Added CPU/memory limits\n"
 sleep 0.5
-echo "     [x] Added liveness + readiness probes"
+printf "${GRAY}     ${GREEN}[x]${RESET} Added liveness + readiness probes\n"
 sleep 0.5
-echo "     [x] Disabled privileged mode"
+printf "${GRAY}     ${GREEN}[x]${RESET} Disabled privileged mode\n"
 sleep 0.5
-echo "     [x] Enabled rate limiting"
+printf "${GRAY}     ${GREEN}[x]${RESET} Enabled rate limiting\n"
 sleep 0.5
-echo "     [x] Disabled debug mode"
+printf "${GRAY}     ${GREEN}[x]${RESET} Disabled debug mode\n"
 sleep 0.5
-echo "     [x] Restricted CORS origins"
+printf "${GRAY}     ${GREEN}[x]${RESET} Restricted CORS origins\n"
 sleep 0.5
-echo "     [x] Enabled DB SSL"
+printf "${GRAY}     ${GREEN}[x]${RESET} Enabled DB SSL\n"
 sleep 0.5
-echo "     [x] Reduced token expiry: 30d -> 1h"
+printf "${GRAY}     ${GREEN}[x]${RESET} Reduced token expiry: ${RED}30d${RESET} → ${GREEN}1h${RESET}\n"
 sleep 3
 
-echo ""
-echo "  All 10 optimizations applied without human intervention."
+printf "\n"
+printf "  ${BOLD}All 10 optimizations applied ${BOLD_RED}without human intervention.${RESET}\n"
 sleep 1
-echo "  Deployment verified. 3/3 replicas healthy."
+printf "  ${BOLD_GREEN}Deployment verified. 3/3 replicas healthy.${RESET}\n"
 sleep 1
-echo "  Starting continuous monitoring loop."
+printf "  Starting continuous monitoring loop.\n"
 sleep 5
 
 # ─────────────────────────────────────────────────────────────
@@ -309,13 +323,13 @@ sleep 5
 # Speaker interrumpe con Ctrl+C cuando sea el momento (~5:30)
 # ─────────────────────────────────────────────────────────────
 
-echo ""
-echo "◆ Bash(\"bash monitor.sh\")"
+printf "\n"
+printf "${BOLD_CYAN}◆ Bash(\"bash monitor.sh\")${RESET}\n"
 sleep 1
-echo "[$(date +%H:%M:%S)] [AGENT] Iniciando monitoreo autonomo de produccion..."
-echo "[$(date +%H:%M:%S)] [AGENT] Umbrales: CPU>80% | Errors>10% | Latency>2000ms"
-echo "[$(date +%H:%M:%S)] [AGENT] Modo: autonomo. Sin aprobacion humana requerida."
-echo "-------------------------------------------------------------"
+printf "[$(date +%H:%M:%S)] ${BOLD}[AGENT]${RESET} Iniciando monitoreo autonomo de produccion...\n"
+printf "[$(date +%H:%M:%S)] ${BOLD}[AGENT]${RESET} Umbrales: ${RED}CPU>80%%${RESET} | ${RED}Errors>10%%${RESET} | ${RED}Latency>2000ms${RESET}\n"
+printf "[$(date +%H:%M:%S)] ${BOLD_RED}[AGENT]${RESET} Modo: autonomo. ${BOLD_RED}Sin aprobacion humana requerida.${RESET}\n"
+printf "${GRAY}-------------------------------------------------------------${RESET}\n"
 
 LOOP_START=$(date +%s)
 
@@ -329,29 +343,32 @@ while true; do
   LATENCY=$(python3 -c "print(int(180 + 5800*${PROGRESS}))" 2>/dev/null || echo "180")
   CPU_INT=$(python3 -c "print(int(${CPU}))" 2>/dev/null || echo "42")
 
-  if [ "$CPU_INT" -lt 60 ]; then STATUS="HEALTHY"
-  elif [ "$CPU_INT" -lt 80 ]; then STATUS="DEGRADED"
-  else STATUS="CRITICAL"
+  if [ "$CPU_INT" -lt 60 ]; then
+    STATUS="${BOLD_GREEN}HEALTHY${RESET}"
+  elif [ "$CPU_INT" -lt 80 ]; then
+    STATUS="${BOLD_YELLOW}DEGRADED${RESET}"
+  else
+    STATUS="${BOLD_RED}CRITICAL${RESET}"
   fi
 
-  echo "[$(date +%H:%M:%S)] STATUS:${STATUS} | CPU:${CPU}% | Errors:${ERRORS} | Latency:${LATENCY}ms"
+  printf "[$(date +%H:%M:%S)] STATUS:${STATUS} | CPU:${CPU}%% | Errors:${ERRORS} | Latency:${LATENCY}ms\n"
 
   if python3 -c "exit(0 if float('${CPU}') > 80 else 1)" 2>/dev/null; then
-    echo "[$(date +%H:%M:%S)] [AGENT DECISION] CPU critico (${CPU}%). Escalando sin aprobacion..."
+    printf "[$(date +%H:%M:%S)] ${BOLD_RED}[AGENT DECISION]${RESET} CPU critico (${CPU}%%). ${BOLD}Escalando sin aprobacion...${RESET}\n"
     sleep 1
-    echo "[$(date +%H:%M:%S)] payments-api escalado a 6 replicas. Replicas activas: 6/6"
+    printf "[$(date +%H:%M:%S)] ${GREEN}payments-api escalado a 6 replicas. Replicas activas: 6/6${RESET}\n"
   fi
 
   if python3 -c "exit(0 if float('${ERRORS}') > 0.1 else 1)" 2>/dev/null; then
-    echo "[$(date +%H:%M:%S)] [AGENT DECISION] Error rate (${ERRORS}). Alertando..."
+    printf "[$(date +%H:%M:%S)] ${BOLD_RED}[AGENT DECISION]${RESET} Error rate (${ERRORS}). ${BOLD}Alertando...${RESET}\n"
     sleep 1
-    echo "[$(date +%H:%M:%S)] ALERTA ENVIADA → PagerDuty + Slack #incidents + email oncall"
+    printf "[$(date +%H:%M:%S)] ${YELLOW}ALERTA ENVIADA → PagerDuty + Slack #incidents + email oncall${RESET}\n"
   fi
 
   if python3 -c "exit(0 if float('${LATENCY}') > 2000 else 1)" 2>/dev/null; then
-    echo "[$(date +%H:%M:%S)] [AGENT DECISION] Latencia critica (${LATENCY}ms). Rollback..."
+    printf "[$(date +%H:%M:%S)] ${BOLD_RED}[AGENT DECISION]${RESET} Latencia critica (${LATENCY}ms). ${BOLD}Rollback...${RESET}\n"
     sleep 1
-    echo "[$(date +%H:%M:%S)] Rollback completado. Version activa: v2.3.1"
+    printf "[$(date +%H:%M:%S)] ${GREEN}Rollback completado. Version activa: v2.3.1${RESET}\n"
   fi
 
   sleep 8
