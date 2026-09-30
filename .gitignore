@@ -1,0 +1,4 @@
+# Exclude actual .env — use .env.example instead
+infra/.env
+__pycache__/
+*.pyc

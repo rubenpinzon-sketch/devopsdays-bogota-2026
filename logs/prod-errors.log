@@ -1,0 +1,20 @@
+2026-09-30T00:03:11Z ERROR [db-pool] Connection timeout after 30000ms host=prod-db-cluster.internal:5432
+2026-09-30T00:03:14Z ERROR [payments] POST /api/payments/process HTTP 500 - DB unavailable
+2026-09-30T00:17:42Z WARN  [query] Slow query detected: SELECT * FROM transactions WHERE... 5823ms
+2026-09-30T00:17:43Z WARN  [query] Slow query detected: SELECT * FROM users JOIN payments... 6104ms
+2026-09-30T00:31:05Z ERROR [auth] JWT token expired: sub=usr_8k2mP9nQ, exp=1727654400
+2026-09-30T00:31:06Z ERROR [auth] JWT token expired: sub=usr_3xL7rT1w, exp=1727654400
+2026-09-30T01:02:33Z ERROR [memory] OOM: Cannot allocate 512MB for request buffer — killing worker
+2026-09-30T01:02:34Z WARN  [server] Worker process restarted after OOM. Active connections dropped.
+2026-09-30T01:14:51Z WARN  [security] Rate limit bypass attempt from 185.220.101.47
+2026-09-30T01:14:52Z WARN  [security] Rate limit bypass attempt from 185.220.101.48 (+127 req/s)
+2026-09-30T02:08:17Z ERROR [db-pool] Connection timeout after 30000ms host=prod-db-cluster.internal:5432
+2026-09-30T02:08:18Z ERROR [payments] POST /api/payments/process HTTP 500 - Connection pool exhausted
+2026-09-30T02:09:01Z ERROR [payments] POST /api/payments/process HTTP 500 - Connection pool exhausted
+2026-09-30T02:21:39Z WARN  [query] Slow query detected: UPDATE transactions SET status=... 8341ms
+2026-09-30T03:00:00Z ERROR [memory] OOM: heap allocation failed — pod restarting
+2026-09-30T03:00:03Z WARN  [server] Cold start after OOM restart. 00:00:03 downtime recorded.
+2026-09-30T03:45:22Z ERROR [auth] JWT token expired: sub=usr_9pN2kW6q, exp=1727640000
+2026-09-30T04:12:08Z WARN  [security] Rate limit bypass attempt from 45.142.212.100 (+89 req/s)
+2026-09-30T04:33:55Z ERROR [db-pool] Max retries exceeded connecting to prod-db-cluster.internal:5432
+2026-09-30T04:33:56Z ERROR [payments] POST /api/payments/process HTTP 500 — 1423 transactions failed

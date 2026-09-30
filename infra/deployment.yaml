@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api
+  namespace: production
+  labels:
+    app: payments-api
+    team: platform
+    criticality: high
+spec:
+  replicas: 1  # WARNING: single replica — no redundancy
+  selector:
+    matchLabels:
+      app: payments-api
+  template:
+    metadata:
+      labels:
+        app: payments-api
+    spec:
+      # SECURITY ISSUE: privileged container in production
+      securityContext:
+        runAsUser: 0
+      containers:
+        - name: payments-api
+          image: payments-api:latest  # WARNING: unpinned tag
+          ports:
+            - containerPort: 3000
+          securityContext:
+            privileged: true          # DANGER: full host access
+            allowPrivilegeEscalation: true
+          # WARNING: no resource limits — can exhaust node
+          # resources:
+          #   requests:
+          #     cpu: "250m"
+          #     memory: "256Mi"
+          #   limits:
+          #     cpu: "500m"
+          #     memory: "512Mi"
+          env:
+            - name: DB_PASSWORD
+              value: "Pr0d_P@ssw0rd_2026!"       # DANGER: hardcoded secret
+            - name: DB_HOST
+              value: "prod-db-cluster.internal:5432"
+            - name: API_KEY
+              value: "sk-prod-xK9mP2nQ8rL4wJ7vH3tY6uE1oI5aS0"
+            - name: STRIPE_SECRET_KEY
+              value: "sk_demo_NOTREAL_4xK9mP2nQr8L4wJ7vH3tY6"
+            - name: AWS_ACCESS_KEY_ID
+              value: "AKIAIOSFODNN7EXAMPLE"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+            - name: ADMIN_PASSWORD
+              value: "Adm1n_Pr0d_2026!"
+            - name: NODE_ENV
+              value: "production"
+          # WARNING: no health checks — unhealthy pods serve traffic
+          # livenessProbe:
+          #   httpGet:
+          #     path: /api/health
+          #     port: 3000
+          #   initialDelaySeconds: 30
+          #   periodSeconds: 10
+          # readinessProbe:
+          #   httpGet:
+          #     path: /api/ready
+          #     port: 3000
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 5

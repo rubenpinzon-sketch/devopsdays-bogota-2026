@@ -1,0 +1,27 @@
+{
+  "environment": "production",
+  "debug": true,
+  "log_level": "verbose",
+  "rate_limiting": {
+    "enabled": false,
+    "reason": "disabled for performance testing"
+  },
+  "cors": {
+    "origins": "*",
+    "credentials": true
+  },
+  "auth": {
+    "required": true,
+    "skip_endpoints": [
+      "/api/health",
+      "/api/metrics",
+      "/api/payments/webhook"
+    ],
+    "token_expiry": "30d"
+  },
+  "database": {
+    "pool_size": 100,
+    "timeout": 30000,
+    "ssl": false
+  }
+}
