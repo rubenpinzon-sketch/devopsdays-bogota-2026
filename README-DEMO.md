@@ -19,6 +19,83 @@ echo $LINES     # debe ser >= 35
 
 ---
 
+## Checklist — 21 oct (HOY — esta tarde/noche) 🔴 URGENTE
+
+```
+[ ] 1. GRABAR devopsdays-demo-backup.mp4 ← VENCIDO (deadline 17 oct)
+         Contenido: apertura.sh completa (0:00-5:30) + Demo 1 + Demo 2 + Demo 3
+         Guardar en: mismo directorio que el PPTX
+         Herramienta: QuickTime > New Screen Recording
+[ ] 2. Sincronizar PDFs al tablet/celular (por si falla el laptop)
+         guion-rapido.pdf ← /Users/ruben.pinzon/repos/Personal/DevOpsDays/
+         script-speaker.pdf ← /Users/ruben.pinzon/repos/Personal/DevOpsDays/
+[ ] 3. Verificar autenticación de Claude Code: claude --version && claude -p "Hello"
+[ ] 4. Verificar gh auth: gh auth status (asegurarse de estar en rubenpinzon-sketch)
+```
+
+---
+
+## Checklist — 22 oct (DÍA PREVIO — venue + prueba técnica)
+
+```
+[ ] 1. Llevar adaptador HDMI (USB-C → HDMI) + cable de respaldo
+[ ] 2. Reunión con técnico AV (10 min):
+         - BRIEFING CRÍTICO: NO intervenir durante los primeros 6 minutos
+         - La pantalla negra y el "error" son INTENCIONALES — parte del show
+         - Coordinar señal visual para cuando termina la apertura
+[ ] 3. Prueba de proyección en venue:
+         - Conectar HDMI, verificar resolución
+         - Legibilidad de terminal desde el fondo del salón (fuente 28pt mínimo)
+         - Verificar brillo ante iluminación del escenario
+[ ] 4. Prueba de WiFi venue (importante para Mentimeter):
+         - curl http://localhost:8080/metrics (no necesita internet, es localhost)
+         - Confirmar que Mentimeter URL carga: https://form.menti.com/s/al347bmxcxfz
+[ ] 5. Ensayo completo cronometrado (60 min) — marcar tiempos reales:
+         Apertura  ___min | B2 ___min | B3+B4 ___min | B5 ___min | B6 ___min | B7 ___min
+[ ] 6. Probar split de iTerm2 (Cmd+D) y verificar visibilidad de ambas terminales
+[ ] 7. Silenciar Apple Watch + iPhone (modo avión o DND)
+[ ] 8. Cargar laptop al 100% la noche anterior
+```
+
+---
+
+## Checklist — 23 oct (DÍA DEL EVENTO — timeline)
+
+```
+7:00 am  Salir de casa con laptop cargado al 100%, adaptador HDMI, agua
+7:30 am  Llegada al venue (Compensar, Av 68) — registrarse con Rafael Martínez
+7:45 am  Prueba técnica on-site: HDMI + proyector + legibilidad terminal
+8:00 am  Confirmar con técnico AV: no intervenir los primeros 6 min
+8:15 am  Setup final (checklist de 15 min abajo)
+8:30 am  Apertura del evento. Sala principal.
+         → Momento libre: meditar, revisar guion-rapido.md una última vez
+~14:00   Slot de la charla (confirmar hora exacta con Rafael)
+         → Llegar al escenario 10 min antes
+```
+
+**Reset entre demos — comandos quirúrgicos:**
+```bash
+# Entre Demo 1→2: NO resetear. Misma sesión de Claude Code.
+
+# Entre Demo 2→3: cerrar Claude Code, abrir split iTerm2
+# (no hay archivos que resetear)
+
+# Si necesitas resetear deployment.yaml o config/app.json:
+git restore infra/deployment.yaml config/app.json
+# NO usar: git restore .  ← borra apertura.sh y monitor.sh con sus colores
+```
+
+**Kit de emergencia (tener accesible):**
+```
+→ devopsdays-demo-backup.mp4 en el Finder (barra lateral)
+→ Mentimeter URL en buffer: https://form.menti.com/s/al347bmxcxfz
+→ guion-rapido.pdf abierto en tablet/celular
+→ Terminal de respaldo: tmux new-session \; split-window -h (si falla iTerm2)
+→ Puerto 8080 bloqueado: kill $(lsof -t -i:8080)
+```
+
+---
+
 ## Checklist — 15 minutos antes de entrar al escenario
 
 ```
