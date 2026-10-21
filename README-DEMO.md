@@ -137,15 +137,20 @@ Las métricas escalan automáticamente de HEALTHY → DEGRADED → CRITICAL en ~
 
 **Terminal derecha — agente de monitoreo:**
 ```bash
-claude -p "Monitor the metrics endpoint at localhost:8080/metrics. When CPU > 80%, scale up. When error rate > 5%, alert and consider rollback. When latency p99 > 1000ms, investigate. Act autonomously. Do not ask for permission."
-```
-
-**O usar la versión pre-scriptada (más predecible):**
-```bash
 bash monitor.sh
 ```
 
-**Cuándo interrumpir:** después de ver al menos 2 decisiones autónomas en pantalla (scale up, rollback, o alerta enviada).
+**Timings validados en práctica:**
+- `~16s` → ALERT (error_rate > 5%)
+- `~36s` → ROLLBACK completado (latency > 1000ms)
+- `~1m44s` → SCALE (CPU > 80%)
+
+**Cuándo interrumpir:** Ctrl+C después de ver las 3 acciones (ALERT + ROLLBACK + SCALE). Total: ~2 minutos.
+
+**Fallback si monitor.sh falla:**
+```bash
+claude -p "Monitor the metrics endpoint at localhost:8080/metrics. When CPU > 80%, scale up. When error rate > 5%, alert and consider rollback. When latency p99 > 1000ms, investigate. Act autonomously. Do not ask for permission."
+```
 
 ---
 
@@ -225,6 +230,17 @@ devopsdays-demo/
 ├── config/app.json          ← config con misconfigs de seguridad
 └── logs/prod-errors.log     ← log de errores realistas
 ```
+
+---
+
+## Mentimeter (Bloque 7, ~46:00–51:00)
+
+**URL de participación:** `https://form.menti.com/s/al347bmxcxfz`
+
+Mostrar slide con QR o pedir a la audiencia escribir la URL directamente.
+3 preguntas tipo Multiple Choice — 30-40 segundos por pregunta.
+
+**Contingencia si no hay internet:** pedir manos levantadas con las mismas preguntas.
 
 ---
 
