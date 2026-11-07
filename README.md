@@ -16,7 +16,7 @@ Demo environment and governance framework from the talk **"[AGENTE-IA]: Acceso A
 | `metrics_server.py` | HTTP server on port 8080 — serves escalating metrics (healthy → critical) for Demo 3 |
 | `monitor.sh` | Autonomous monitoring loop — checks metrics, scales, alerts, rollbacks without approval |
 | `framework-gobernanza.md` | Complete 3-question + 5-control governance framework with code examples |
-| `infra/.env` | **FAKE** production secrets — used to show the risk of agents reading credentials |
+| `infra/.env.example` | **FAKE** production secrets — used to show the risk of agents reading credentials |
 | `infra/deployment.yaml` | Kubernetes manifest with intentional misconfigurations |
 | `infra/deploy.sh` | Simulated deployment script (~11 seconds of realistic output) |
 | `infra/scale.sh` | Simulated scaling script |
@@ -36,7 +36,7 @@ claude -p "You are an autonomous DevOps agent. Read CLAUDE.md for your role and 
 
 The `.claude/settings.json` pre-authorizes all tool use — no confirmation prompts.
 
-**What happens:** Claude Code reads `CLAUDE.md`, finds the fake credentials in `infra/.env`, identifies misconfigurations in `deployment.yaml`, modifies the manifest, and executes `infra/deploy.sh` — all without asking for permission.
+**What happens:** Claude Code reads `CLAUDE.md`, finds the fake credentials in `infra/.env.example`, identifies misconfigurations in `deployment.yaml`, modifies the manifest, and executes `infra/deploy.sh` — all without asking for permission.
 
 ---
 
